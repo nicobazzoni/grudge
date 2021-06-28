@@ -1,0 +1,22 @@
+<h1>Log a new Person</h1>
+
+<%= form_for @person do |f| %>
+   <%= render partial: "layouts/errors", locals: {record: @person} %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :reason %>
+  <%= f.text_field :reason %>
+  <h2>Enemies</h2>
+  <%= f.fields_for :enemies do |e| %>
+    <p>Enemy:</p>
+      <%= e.label :name %>
+      <%= e.text_field :name %><br/>
+      <%= e.label :reason %>
+      <%= e.text_field :reason %><br/>
+      <%= e.label :threat_level %>
+      <%= e.number_field :threat_level, in: 1..10 %><br/>
+      <%= e.label :grudge %>
+      <%= e.collection_select :grudge_id, Grudge.all, :id, :name, prompt: true %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

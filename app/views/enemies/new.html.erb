@@ -1,0 +1,7 @@
+<h3>GOT BEEF?</h3>
+<% if @grudge %>
+  <h1>  <%= @grudge.name %></h1>
+<% else %>
+  <h1> Youre a peaceful fellow </h1>
+<% end %>
+<%= render partial: "form", locals: {enemy: @enemy, grudge: @grudge} %>

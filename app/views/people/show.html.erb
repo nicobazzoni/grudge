@@ -1,0 +1,15 @@
+<h1><%= @person.name %></h1>
+<h3>Reason for Grudge: <%= @person.reason%></h3>
+<p>Adversaries: </p>
+<% if @person.enemies.any? %>
+  <ul>
+    <% @person.enemies.each do |enemy| %>
+    <li><%= link_to enemy.name, enemy %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul><li><%= @person.name %> has no adversaries yet!</li></ul>
+<% end %>
+<%= button_to "Edit #{@person.name}", edit_person_path(@person), method: :get %>
+<%= button_to "Kill #{@person.name}", @person, method: :delete, data: {
+  confirm: "Are yousure you want to delete?" } %>

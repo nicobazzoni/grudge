@@ -1,0 +1,27 @@
+<%= form_for enemy do |f| %>
+    <%= render partial: "layouts/errors", locals: {record: @enemy} %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br/>
+    <%= f.label :reason %>
+    <%= f.text_field :reason%><br/>
+    <%= f.label :person_name %>
+    <%= f.text_field :person_name %><br/>
+  
+    <% if false %>
+    <input list="person_names" value=<%= enemy.person_name %> id="enemy[person_name]" name="enemy[person_name]" />
+    <datalist id="person_names">
+        <% Person.all.each do |person| %>
+          <option value=<%= person.name %>>
+        <% end %>
+    </datalist>
+    <% end %>
+    <%= f.label :reason %>
+    <%= f.text_field :reason %><br/>
+    <% if grudge %>
+      <%= f.hidden_field :grudge_id, value: grudge.id %>
+    <% else %>
+      <%= f.label :grudge%>
+      <%= f.collection_select :grudge_id, Grudge.all, :id, :name, prompt: true %>
+    <% end %>
+    <%= f.submit %>
+  <% end %>

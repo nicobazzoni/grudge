@@ -1,0 +1,8 @@
+<h1><%= @enemy.name %></h1>
+<p>Reason: <%= @enemy.reason %></p>
+<p>Enemy: <%= @enemy.person_name %></p>
+<p>Power Level: <%= "💪 " * @enemy.threat_level %></p>
+<p>Grudge: <%= grudge(@enemy) %></p>
+
+<%= button_to "Edit #{@enemy.name}", edit_enemy_path(@enemy), method: :get %>
+<%= button_to "Delete #{@enemy.name}", @enemy, method: :delete %>

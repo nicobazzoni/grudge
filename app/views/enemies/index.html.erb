@@ -1,0 +1,17 @@
+
+
+<% if @grudge %>
+<h1><%= render partial: "grudges/grudge", locals: {grudge: @grudge}%></h1>
+<% else %>
+<h1>WELCOME TO THE ENEMY REGISTRY</h1>
+<% end %>
+
+<h3>Current Roster</h3>
+<ul><% @enemies.each do |enemy| %>
+<li><%= link_to enemy.name, enemy %></li>
+<% end %>
+</ul>
+
+<% if @grudge %>
+<%= link_to "Add a new member of #{@grudge.name}", new_grudge_enemy_path(@grudge) %>
+<% end %>
